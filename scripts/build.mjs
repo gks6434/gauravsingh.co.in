@@ -527,8 +527,23 @@ DirectoryIndex index.html
 
 ErrorDocument 404 /404.html
 
-# The FTP deploy action stores its incremental sync state here. Harmless, but
-# there is no reason for it to be publicly readable.
+# --- Block the source tree -------------------------------------------------
+# The built site and its source share one repository, and Hostinger checks the
+# repository root out into public_html. These paths therefore exist on the web
+# server; none of them should be reachable over HTTP.
+RedirectMatch 404 ^/(src|content|scripts|node_modules|dist|\\.github|\\.git)(/|$)
+
+<FilesMatch "^(package(-lock)?\\.json|README\\.md|\\.gitignore|.*\\.mjs|.*\\.md)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Deployment metadata should never be readable either.
 <FilesMatch "^\\.(ftp-deploy-sync-state\\.json|htaccess|env)$">
   <IfModule mod_authz_core.c>
     Require all denied

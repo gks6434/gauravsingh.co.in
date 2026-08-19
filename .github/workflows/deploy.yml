@@ -7,7 +7,7 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Never let two builds race to publish the deploy branch.
+# Never let two builds race to commit the generated site.
 concurrency:
   group: deploy-${{ github.ref }}
   cancel-in-progress: false
@@ -17,12 +17,15 @@ permissions:
 
 jobs:
   build-and-deploy:
-    name: Build, validate and publish
+    name: Build, validate and commit the site
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out
         uses: actions/checkout@v4
+        with:
+          # Full history so the generated commit can be pushed back to main.
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -38,31 +41,51 @@ jobs:
       - name: Build and validate
         run: npm run verify
 
-      # Hostinger's Git integration checks a branch out straight into
-      # public_html, so it needs a branch whose ROOT is the built site — not
-      # the source tree. This publishes public/ to the `deploy` branch, which
-      # is what Hostinger tracks. Force-pushed: it is a build artefact, not
-      # history worth keeping.
-      - name: Publish built site to the deploy branch
+      # Hostinger checks this repository's ROOT out into public_html and cannot
+      # run a build, so the generated site has to live at the root alongside the
+      # source. This replaces the previous generation with the new one.
+      #
+      # The list of generated entries comes from the build output itself, so
+      # adding or removing a page needs no change here. Source directories
+      # (src, content, scripts, .github) never collide with generated names.
+      - name: Commit the built site to the repository root
         if: github.event_name != 'pull_request'
         run: |
-          cd public
-          git init -q
-          git checkout -qb deploy
+          set -euo pipefail
+
+          echo "Replacing previously generated files:"
+          while IFS= read -r entry; do
+            [ -z "$entry" ] && continue
+            echo "  - $entry"
+            rm -rf -- "./$entry"
+          done < <(cd public && ls -A)
+
+          # Copy with tar so dotfiles (.htaccess) come across reliably.
+          (cd public && tar cf - .) | tar xf -
+
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -qm "Build ${GITHUB_SHA::7} — $(date -u '+%Y-%m-%d %H:%M UTC')"
-          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" deploy
-          echo "Published $(git ls-files | wc -l | tr -d ' ') files to the deploy branch"
+
+          if git diff --cached --quiet; then
+            echo "Built site is unchanged — nothing to commit."
+            exit 0
+          fi
+
+          # [skip ci] is belt-and-braces: pushes made with GITHUB_TOKEN do not
+          # trigger workflow runs, so this cannot loop.
+          git commit -qm "Build site from ${GITHUB_SHA::7} [skip ci]"
+          git push -q origin HEAD:main
+          echo "Committed and pushed the generated site."
 
       - name: Summary
         if: github.event_name != 'pull_request'
         run: |
           {
-            echo "### Built and published to \`deploy\`"
+            echo "### Built site committed to \`main\`"
             echo ""
             echo "Source commit: \`${{ github.sha }}\`"
             echo ""
-            echo "Hostinger tracks the \`deploy\` branch and checks it out into \`public_html\`."
+            echo "Hostinger checks \`main\` out into \`public_html\`."
+            echo "If auto-deployment is not enabled, press **Redeploy** in hPanel."
           } >> $GITHUB_STEP_SUMMARY
