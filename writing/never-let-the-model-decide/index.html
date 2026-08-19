@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Never let the model decide — Gaurav Kumar Singh</title>
+  <meta name="description" content="Most enterprise AI pilots fail an internal review not because the answers are bad, but because nobody can say what the system is structurally incapable of doing. Here is the pattern that fixes it.">
+  <link rel="canonical" href="https://gauravsingh.co.in/writing/never-let-the-model-decide/">
+  <meta name="author" content="Gaurav Kumar Singh">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Gaurav Kumar Singh">
+  <meta property="og:title" content="Never let the model decide — Gaurav Kumar Singh">
+  <meta property="og:description" content="Most enterprise AI pilots fail an internal review not because the answers are bad, but because nobody can say what the system is structurally incapable of doing. Here is the pattern that fixes it.">
+  <meta property="og:url" content="https://gauravsingh.co.in/writing/never-let-the-model-decide/">
+  <meta property="og:image" content="https://gauravsingh.co.in/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Never let the model decide — Gaurav Kumar Singh">
+  <meta name="twitter:description" content="Most enterprise AI pilots fail an internal review not because the answers are bad, but because nobody can say what the system is structurally incapable of doing. Here is the pattern that fixes it.">
+  <meta name="twitter:image" content="https://gauravsingh.co.in/assets/img/og.png">
+
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="color-scheme" content="light">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@350;400;450;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gauravsingh.co.in/"},{"@type":"ListItem","position":2,"name":"Writing","item":"https://gauravsingh.co.in/writing/"},{"@type":"ListItem","position":3,"name":"Never let the model decide","item":"https://gauravsingh.co.in/writing/never-let-the-model-decide/"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Never let the model decide","description":"Most enterprise AI pilots fail an internal review not because the answers are bad, but because nobody can say what the system is structurally incapable of doing. Here is the pattern that fixes it.","datePublished":"2026-08-19","dateModified":"2026-08-19","author":{"@type":"Person","name":"Gaurav Kumar Singh","url":"https://gauravsingh.co.in"},"publisher":{"@type":"Person","name":"Gaurav Kumar Singh","url":"https://gauravsingh.co.in"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gauravsingh.co.in/writing/never-let-the-model-decide/"},"keywords":"Enterprise AI, AI Governance, Digital Transformation"}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="site-head">
+    <div class="wrap site-head__inner">
+      <a class="brand" href="/">
+        <span class="brand__mark" aria-hidden="true">GS</span>
+        <span>Gaurav<span class="brand__mid"> Kumar</span> <span class="brand__last">Singh</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+          <a href="/about/">About</a>
+          <a href="/work/">Work</a>
+          <a href="/writing/" aria-current="page">Writing</a>
+          <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+<nav class="wrap small muted" aria-label="Breadcrumb" style="padding-top:1.4rem">
+      <a href="/" style="color:inherit;text-decoration:none">Home</a> <span aria-hidden="true">/</span> <a href="/writing/" style="color:inherit;text-decoration:none">Writing</a> <span aria-hidden="true">/</span> <span aria-current="page">Never let the model decide</span>
+    </nav>
+  <main id="main">
+
+    <article>
+      <header class="wrap cs-head">
+        <span class="eyebrow">19 August 2026 &middot; 4 min read</span>
+        <h1>Never let the model decide</h1>
+        <p class="lede">Most enterprise AI pilots fail an internal review not because the answers are bad, but because nobody can say what the system is structurally incapable of doing. Here is the pattern that fixes it.</p>
+        <ul class="pill-list"><li>Enterprise AI</li><li>AI Governance</li><li>Digital Transformation</li></ul>
+      </header>
+      <div class="wrap section"><div class="prose"><p>There is a moment in every enterprise AI pilot where someone senior asks the question that
+kills it.</p>
+<p>Not <em>&quot;is it accurate?&quot;</em> — you will have an accuracy number ready. The question is:
+<strong>&quot;what happens when it&#39;s wrong in front of a customer?&quot;</strong></p>
+<p>If your answer is &quot;we&#39;ve tested it extensively&quot; or &quot;we&#39;ve told it not to do that in the
+prompt,&quot; the pilot is over. You just do not know it yet. Because what you have described is
+a system that is <em>usually</em> right, and the person asking is responsible for what happens in
+the cases where usually is not good enough.</p>
+<h2>Accuracy is the wrong thing to argue about</h2>
+<p>The instinct is to respond by improving the model. Better prompts, more context, a bigger
+model, more examples. This is a treadmill, and it is the wrong race, because the objection
+was never really about the error rate.</p>
+<p>The objection is about <strong>authority</strong>. Who, or what, is making the decision that carries
+consequences? If the answer is &quot;a language model, probabilistically, at runtime,&quot; then no
+amount of measured accuracy resolves the concern — because the reviewer cannot inspect the
+decision, cannot version it, cannot sign it off, and cannot guarantee it will not change
+tomorrow.</p>
+<p>You are asking someone to accept accountability for a process they cannot audit. They are
+right to refuse.</p>
+<h2>Separate interpretation from decision</h2>
+<p>The pattern that works is to split the system into two things that most chatbot
+architectures blur together.</p>
+<p><strong>Interpretation</strong> — turning what a person said into structured data — is genuinely hard,
+genuinely valuable, and exactly what language models are extraordinary at. A customer saying
+&quot;we&#39;re getting inconsistent readings on thin film samples and I think it&#39;s the substrate&quot;
+contains real structure. Extracting it is worth a great deal.</p>
+<p><strong>Decision</strong> — determining what should be recommended, quoted, approved or actioned — is
+something else entirely. It is a business rule. It has an owner. It has consequences. It
+needs to be reviewable by the person accountable for it, and it needs to produce the same
+output tomorrow that it produced today.</p>
+<p>So: let the model interpret. Do not let it decide.</p>
+<p>In the system I built for a technical exhibition, this means the model reads the visitor&#39;s
+description and produces structured technical intent — nothing more. That structure goes to
+a deterministic, version-controlled rule engine written and approved by the people who
+actually know the instruments. The rule engine returns an authorised answer. Only then does
+the model write the explanation, constrained to what was authorised.</p>
+<p>The language model is on both ends of the pipeline and in the middle of none of it.</p>
+<h2>The three things this unlocks</h2>
+<p><strong>A reviewer can inspect the rules.</strong> Not the weights, not the prompt, not a benchmark — the
+actual rules, in a file, in version control, with a change history. Someone can read them,
+disagree, and correct them. That is what sign-off requires and it is what a prompt can never
+provide.</p>
+<p><strong>The failure mode becomes acceptable.</strong> When the rules produce nothing, the honest output is
+&quot;I can&#39;t answer this — here is a specialist.&quot; That is not a system failure. That is the
+system working. Designing that path deliberately, and early, removed more internal objections
+than any improvement in answer quality.</p>
+<p><strong>Behaviour becomes testable.</strong> Once decisions live in rules rather than in model outputs,
+you can write test cases against them and run those cases on every change. My system has 44,
+running alongside the normal type, lint, unit, end-to-end, accessibility and security gates.
+Change a prompt, a rule or the retrieval layer, and the suite tells you what moved. Model
+behaviour stops being something you spot-check before a demo and becomes something you can
+prove.</p>
+<h2>Retrieval does not solve this on its own</h2>
+<p>A common counter-argument: <em>ground it in our documents and it can&#39;t hallucinate.</em></p>
+<p>Retrieval helps a great deal — with one condition that most implementations skip. Retrieval
+is only as trustworthy as what it retrieves from. If your knowledge base is &quot;everything we
+crawled,&quot; you have not eliminated the risk, you have relocated it: now the system can
+confidently cite a superseded datasheet, an internal draft, or a page describing a product
+you no longer sell.</p>
+<p>Which is why the ingestion pipeline needs a governance workflow — draft, review, approved —
+and the retrieval layer needs to be structurally incapable of citing anything that has not
+been approved. Not &quot;unlikely to.&quot; Incapable.</p>
+<p>That is unglamorous work. It is also the difference between a demo and something that gets
+deployed.</p>
+<h2>What this means for how we adopt AI</h2>
+<p>The pattern generalises well past chatbots. Any process where you are tempted to put a
+language model — quotation, triage, routing, qualification, approval — has the same shape:
+an interpretation problem wrapped around a decision problem. The interpretation is the part
+that was previously impossible to automate. The decision is usually the part you already
+have rules for, written down somewhere, or living in the head of someone who has been doing
+the job for fifteen years.</p>
+<p>The value is not in replacing that person&#39;s judgement with a probability distribution. It is
+in <strong>capturing their judgement as explicit rules</strong>, and then using AI to remove the friction
+of getting a real-world problem into a form those rules can act on.</p>
+<p>That is a less exciting story than autonomous AI. It also survives contact with a risk
+committee, which is the only kind of AI adoption that reaches production.</p>
+<hr>
+<p><em>I write about digital transformation, enterprise automation and applied AI. If you are
+working through something similar, I am always up for the conversation —
+<a href="/contact/">get in touch</a>.</em></p>
+</div></div>
+    </article>
+    <section class="wrap section" style="padding-top:0">
+      <div class="sec-head reveal"><div><h2>More writing</h2></div><a class="sec-link" href="/writing/">All posts <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div class="rows"><article class="row reveal">
+            <h3><a href="/writing/agree-the-vocabulary-first/">Agree the vocabulary before you automate the process</a></h3>
+            <div class="row__date">12 August 2026 · 3 min</div>
+            <p>The hardest part of a lead management transformation was not Power Automate or Salesforce. It was getting three teams to mean the same thing by the word &quot;qualified&quot;.</p>
+          </article></div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-name">Gaurav Kumar Singh</div>
+          <p class="muted" style="max-width:36ch">Digital Transformation · MarTech &amp; Process Automation · AI-Enabled Solutions</p>
+          <p class="muted" style="margin-top:.85rem">Greater Noida West, Uttar Pradesh, India</p>
+        </div>
+        <div>
+          <h4>Site</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/work/">Work</a></li>
+            <li><a href="/writing/">Writing</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/gks0410/" rel="me noopener" target="_blank">LinkedIn</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 Gaurav Kumar Singh</span>
+        <span>Hand-built static site. No trackers, no cookie banner.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
