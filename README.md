@@ -55,29 +55,32 @@ this cannot happen by accident again.
 
 ## Automatic deployment
 
-Every push to `main` triggers `.github/workflows/deploy.yml`, which builds the
-site, runs the validation suite, and uploads only the changed files to
-`public_html` over FTPS. A pull request runs build + validate but does not deploy.
+Two branches, two jobs:
 
-Required repository **secrets** (Settings → Secrets and variables → Actions):
-
-| Secret | Value |
-|---|---|
-| `FTP_SERVER` | Hostinger FTP hostname or IP, from hPanel → Files → FTP Accounts |
-| `FTP_USERNAME` | FTP username from the same screen |
-| `FTP_PASSWORD` | FTP password (set or reset it there) |
-
-Optional repository **variables**, only if the defaults do not fit:
-
-| Variable | Default | When to change |
+| Branch | Contains | Who touches it |
 |---|---|---|
-| `FTP_SERVER_DIR` | `public_html/` | If your FTP user lands somewhere other than the account root |
-| `FTP_PROTOCOL` | `ftps` | Set to `ftp` if FTPS negotiation fails |
-| `FTP_PORT` | `21` | Rarely needed |
+| `main` | Source — Markdown, templates, scripts, assets | You |
+| `deploy` | The built site only (`index.html` at the root) | GitHub Actions, force-pushed |
 
-The first deploy uploads everything; later ones transfer only what changed,
-tracked by a state file the action keeps on the server. `.htaccess` blocks that
-file from public access.
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site,
+runs the validation suite, and force-pushes the contents of `public/` to the
+`deploy` branch. Pull requests build and validate without publishing.
+
+**Hostinger must track `deploy`, not `main.`** Hostinger checks a branch out
+directly into `public_html`, so it needs a branch whose root *is* the website.
+Pointing it at `main` serves the source tree and returns 403, because there is
+no `index.html` at the root of `main`.
+
+In hPanel → Websites → gauravsingh.co.in → Advanced → GIT:
+
+1. Set **Branch** to `deploy` (recreate the connection if the branch cannot be
+   edited in place).
+2. Keep **Root directory** as `public_html`.
+3. Enable **auto-deployment** from the `⋮` menu and add the webhook URL it gives
+   you to GitHub → Settings → Webhooks, so a push deploys without a click.
+
+No secrets or FTP credentials are needed — Actions authenticates with the
+built-in `GITHUB_TOKEN`.
 
 ## Deploying by hand (fallback)
 

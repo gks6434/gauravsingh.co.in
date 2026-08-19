@@ -7,14 +7,17 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Never let two deploys touch public_html at the same time.
+# Never let two builds race to publish the deploy branch.
 concurrency:
   group: deploy-${{ github.ref }}
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
-    name: Build, validate and deploy
+    name: Build, validate and publish
     runs-on: ubuntu-latest
 
     steps:
@@ -28,32 +31,38 @@ jobs:
           cache: 'npm'
 
       # Image and social-card generation are local authoring steps that write
-      # into src/assets (committed), so CI needs runtime deps only. This keeps
-      # the run fast and avoids installing native image binaries.
+      # into src/assets (committed), so CI needs runtime deps only.
       - name: Install dependencies
         run: npm ci --omit=dev
 
       - name: Build and validate
         run: npm run verify
 
-      - name: Deploy to Hostinger
+      # Hostinger's Git integration checks a branch out straight into
+      # public_html, so it needs a branch whose ROOT is the built site — not
+      # the source tree. This publishes public/ to the `deploy` branch, which
+      # is what Hostinger tracks. Force-pushed: it is a build artefact, not
+      # history worth keeping.
+      - name: Publish built site to the deploy branch
         if: github.event_name != 'pull_request'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
-          port: ${{ vars.FTP_PORT || 21 }}
-          local-dir: ./public/
-          server-dir: ${{ vars.FTP_SERVER_DIR || 'public_html/' }}
-          # Incremental: only changed files are transferred. Set to true once
-          # if you ever need to force a full re-upload.
-          dangerous-clean-slate: false
+        run: |
+          cd public
+          git init -q
+          git checkout -qb deploy
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "Build ${GITHUB_SHA::7} — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" deploy
+          echo "Published $(git ls-files | wc -l | tr -d ' ') files to the deploy branch"
 
       - name: Summary
         if: github.event_name != 'pull_request'
         run: |
-          echo "### Deployed to https://gauravsingh.co.in" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Commit: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          {
+            echo "### Built and published to \`deploy\`"
+            echo ""
+            echo "Source commit: \`${{ github.sha }}\`"
+            echo ""
+            echo "Hostinger tracks the \`deploy\` branch and checks it out into \`public_html\`."
+          } >> $GITHUB_STEP_SUMMARY
