@@ -4,25 +4,32 @@ export const site = {
   shortName: 'Gaurav Singh',
   domain: 'gauravsingh.co.in',
   url: 'https://gauravsingh.co.in',
-  role: 'Digital Transformation | MarTech & Process Automation | AI-Enabled Business Solutions',
+  role: 'Digital Transformation · MarTech & Process Automation · AI-Enabled Solutions',
   tagline: 'Digital transformation, MarTech and applied AI.',
   description:
     'Gaurav Kumar Singh — digital transformation, MarTech and applied AI. Ten years building web platforms, CRM and lead lifecycle systems, workflow automation and AI-enabled customer experiences for B2B businesses.',
-  email: 'gks.6434@gmail.com',
-  phone: '+91-7004917881',
+
+  // Contact — deliberately no phone number, and the address is shown obfuscated.
+  // emailUser/emailDomain are assembled in the browser so the plain string never
+  // appears in the served HTML for scrapers to lift.
+  emailUser: 'gks.6434',
+  emailDomain: 'gmail.com',
+  emailDisplay: 'gks.6434 [at] gmail.com',
+
   location: 'Greater Noida West, Uttar Pradesh, India',
-  linkedin: 'https://www.linkedin.com/in/REPLACE-WITH-YOUR-HANDLE',
+  linkedin: 'https://www.linkedin.com/in/gks0410/',
   employer: 'HORIBA India Pvt. Ltd.',
   jobTitle: 'Deputy Manager, Digital Marketing Lead',
   availability: 'Open to Digital Transformation & AI adoption roles',
   cvPath: '/assets/files/Gaurav-Kumar-Singh-CV.pdf',
   ogImage: '/assets/img/og.png',
+
   nav: [
-    { href: '/',         label: 'Home',    short: 'Home' },
-    { href: '/about/',   label: 'About',   short: 'About' },
-    { href: '/work/',    label: 'Work',    short: 'Work' },
-    { href: '/writing/', label: 'Writing', short: 'Writing' },
-    { href: '/contact/', label: 'Contact', short: 'Contact' }
+    { href: '/',         label: 'Home' },
+    { href: '/about/',   label: 'About' },
+    { href: '/work/',    label: 'Work' },
+    { href: '/writing/', label: 'Writing' },
+    { href: '/contact/', label: 'Contact' }
   ],
   alumniOf: [
     'Indian Institute of Management Kozhikode',
@@ -34,8 +41,5 @@ export const site = {
     'Microsoft Power Automate', 'Salesforce', 'HubSpot', 'Google Analytics 4',
     'Google Tag Manager', 'Looker Studio', 'Lead Lifecycle Management',
     'Generative AI Adoption', 'Digital Product Management', 'Technical SEO'
-  ],
-  pastEmployers: [
-    'DigiClap Technologies (TripClap.com)', 'CARS24', 'Investors Clinic', 'HelloTravel'
   ]
 };

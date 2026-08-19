@@ -11,6 +11,7 @@ no CMS, no runtime dependencies on the server. Hostinger just serves files.
 | `npm run dev` | Builds, then serves at http://localhost:4321 |
 | `npm run new:post -- "Post title"` | Creates a new Markdown post in `content/writing/` |
 | `npm run og` | Regenerates the social share image and touch icon |
+| `npm run images` | Rebuilds responsive WebP variants from the source photos |
 | `npm run zip` | Builds and packages `dist/site.zip` for upload |
 
 ## Where things live
@@ -21,6 +22,9 @@ content/writing/    One Markdown file per post
 src/site.mjs        Name, email, LinkedIn, nav — edit here, rebuild
 src/layout.mjs      The HTML shell: meta tags, schema, header, footer
 src/assets/         CSS, JS, images, CV PDF (copied to public/ on build)
+src/assets/img/photos/  source-*.png are the originals — NEVER shipped,
+                    the build filters them out. Run `npm run images` after
+                    replacing one to regenerate the .webp variants.
 public/             GENERATED. Never edit by hand — it is wiped every build.
 ```
 
@@ -68,3 +72,40 @@ The URL comes from the filename with the date prefix stripped, unless you set
   cookie notice.
 - The stylesheet is one file, `src/assets/css/style.css`. Colours are CSS variables at
   the top; change `--accent` to re-skin the whole site.
+
+
+## Contact details — deliberate choices
+
+The site carries **no phone number** and the email address never appears as
+plain text in the served HTML. `/contact/` shows `gks.6434 [at] gmail.com`
+visually, and `src/assets/js/main.js` joins `data-user` + `data-domain` at
+runtime to build the `mailto:` link. Scrapers reading the HTML source find
+nothing to harvest; a human gets a working link and a copy button.
+
+The Person schema deliberately omits `email` and `telephone` for the same reason.
+LinkedIn is the primary contact route.
+
+## Confidentiality
+
+Case studies describe **scope, architecture and outcome** — not employer project
+names, event names or internal system names. The current employer appears only in
+the career timeline on `/about/` (the same information already on the CV and
+LinkedIn). If you ever want that removed too, edit the timeline in
+`scripts/build.mjs`.
+
+Before publishing a new case study, re-read it and ask: could a competitor learn
+something specific from this that they could not learn from the job title alone?
+If yes, generalise it.
+
+## Design system
+
+Glassmorphism on white, from the `ui-ux-pro-max` design database (Portfolio Grid
+pattern, Glassmorphism style, stagger-reveal motion).
+
+The palette rule that matters: **pastels carry the atmosphere, never the
+information.** The aurora blobs and icon tiles are pastel; every piece of text
+sits in near-black or indigo on high-opacity glass. All text pairs measured at
+5.4:1 or better against WCAG AA's 4.5:1.
+
+Colours are CSS custom properties at the top of `src/assets/css/style.css`.
+Change `--accent` and the `--pastel-*` values to re-skin the whole site.

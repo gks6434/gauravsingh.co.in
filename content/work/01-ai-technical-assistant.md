@@ -3,7 +3,7 @@ title: An AI assistant that is not allowed to choose the product
 slug: ai-technical-assistant
 summary: A conversational assistant that turns a visitor's plain-language measurement problem into a cited, technically validated recommendation — with a deterministic rule engine, not the language model, holding all recommendation authority.
 tag: Applied AI
-org: HORIBA India
+org: Enterprise B2B · Scientific instrumentation
 period: 2026
 role: Solution design, architecture, build, evaluation
 status: Built and test-gated; in internal approval and rehearsal
@@ -19,7 +19,7 @@ metrics:
 
 ## The problem
 
-At a technical exhibition, the bottleneck is not footfall. It is that a visitor with a
+At a large technical exhibition, the bottleneck is not footfall. It is that a visitor with a
 genuine measurement problem has to wait for one of a small number of applications
 specialists to be free, describe their problem, and hope the specialist happens to know
 the right instrument for that exact application. Most visitors never get that

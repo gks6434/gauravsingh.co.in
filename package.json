@@ -10,12 +10,14 @@
     "new:post": "node scripts/new-post.mjs",
     "og": "node scripts/og.mjs",
     "zip": "npm run build && node scripts/zip.mjs",
-    "dev": "npm run build && node scripts/serve.mjs"
+    "dev": "npm run build && node scripts/serve.mjs",
+    "images": "node scripts/images.mjs"
   },
   "dependencies": {
     "marked": "^15.0.7"
   },
   "devDependencies": {
-    "@resvg/resvg-js": "^2.6.2"
+    "@resvg/resvg-js": "^2.6.2",
+    "sharp": "^0.35.3"
   }
 }

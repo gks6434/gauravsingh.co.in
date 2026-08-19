@@ -1,9 +1,9 @@
 ---
 title: An employee experience platform built on licences we already owned
 slug: employee-experience-platform
-summary: A digital engagement platform for HORIBA India's 20th anniversary — built on SharePoint and Microsoft 365, reaching 600+ employees, with personalised communication automated through Power Automate and no incremental software spend.
+summary: A digital engagement platform for the organisation's 20th anniversary — built on SharePoint and Microsoft 365, reaching 600+ employees, with personalised communication automated through Power Automate and no incremental software spend.
 tag: Employee Experience
-org: HORIBA India
+org: Enterprise B2B · Scientific instrumentation
 period: 2025
 role: Concept, information architecture, experience design, automation
 status: Delivered
@@ -18,7 +18,7 @@ metrics:
 
 ## The brief, and the constraint
 
-HORIBA India's 20th anniversary needed to be more than an event day. It needed a digital
+the organisation's 20th anniversary needed to be more than an event day. It needed a digital
 experience that carried the story, invited participation, and reached everyone — including
 the large share of employees who are not sitting at a desk when things happen.
 

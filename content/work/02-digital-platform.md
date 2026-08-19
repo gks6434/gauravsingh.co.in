@@ -1,9 +1,9 @@
 ---
 title: Turning a corporate website into a digital business platform
 slug: digital-platform-transformation
-summary: Rebuilding in.horiba.com from a brochure site into a platform that carries product discovery, technical documentation, 3D catalogue, events and enquiry capture — and became a primary source of organic traffic and digital enquiries.
+summary: Rebuilding a country corporate site from a brochure into a platform that carries product discovery, technical documentation, 3D catalogue, events and enquiry capture — and became a primary source of organic traffic and digital enquiries.
 tag: Digital Platform
-org: HORIBA India
+org: Enterprise B2B · Scientific instrumentation
 period: 2024 — present
 role: Business requirements, information architecture, SEO architecture, UX review, delivery direction
 status: Live and iterating
@@ -19,7 +19,7 @@ metrics:
 
 ## The problem
 
-The India website was a brochure. It described the company accurately and did almost nothing
+The country website was a brochure. It described the company accurately and did almost nothing
 else. Product information lived in PDFs. Enquiries arrived as unstructured email. Events
 happened offline and left no digital trace. Four very different B2B businesses —
 Bio & Healthcare, Materials & Semiconductor, Energy & Environment, and Mobility — shared one
@@ -30,7 +30,7 @@ when it needed to be run as a business platform.
 
 ## What changed
 
-I treated in.horiba.com as a system with a job to do — help a technical buyer find the right
+I treated the site as a system with a job to do — help a technical buyer find the right
 instrument, understand it well enough to have an informed conversation, and raise a
 qualified enquiry — and specified it accordingly.
 

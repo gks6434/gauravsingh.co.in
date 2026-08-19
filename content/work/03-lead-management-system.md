@@ -3,7 +3,7 @@ title: From shared inboxes to a traceable lead lifecycle
 slug: lead-management-transformation
 summary: Replacing fragmented shared-mailbox enquiry handling with a centralised, automated lead workflow across Power Automate, SharePoint and Salesforce — and a lifecycle framework that finally connected a digital enquiry to its sales outcome.
 tag: Automation & CRM
-org: HORIBA India
+org: Enterprise B2B · Scientific instrumentation
 period: 2025 — present
 role: Process design, workflow architecture, CRM requirements, rollout
 status: Operating

@@ -3,7 +3,7 @@ title: 15× organic growth, and the measurement that made it defensible
 slug: organic-growth-and-attribution
 summary: Rebuilding the acquisition foundation for a travel marketplace — site architecture, technical SEO and a content programme drove 15× organic traffic growth, while GA4, Conversions API and multi-touch attribution replaced unreliable last-click reporting.
 tag: Growth & Analytics
-org: DigiClap Technologies (TripClap.com)
+org: Travel marketplace · B2C
 period: 2022 — 2024
 role: Performance Marketing Manager
 status: Delivered
