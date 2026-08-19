@@ -1,7 +1,7 @@
 ---
 title: The arithmetic of going digital — cost, time and reach
 description: Digital transformation in B2B marketing is usually lost in a budget meeting, not a strategy meeting. Here is the comparison that actually moves the number, and what management has to commit to for it to hold.
-date: 2026-08-19
+date: 2026-08-18
 tags: B2B Marketing, Marketing ROI, Digital Transformation
 ---
 
