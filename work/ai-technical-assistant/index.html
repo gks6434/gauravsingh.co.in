@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>An AI assistant that is not allowed to choose the product — Gaurav Kumar Singh</title>
+  <meta name="description" content="A conversational assistant that turns a visitor's plain-language measurement problem into a cited, technically validated recommendation — with a deterministic rule engine, not the language model, holding all recommendation authority.">
+  <link rel="canonical" href="https://gauravsingh.co.in/work/ai-technical-assistant/">
+  <meta name="author" content="Gaurav Kumar Singh">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Gaurav Kumar Singh">
+  <meta property="og:title" content="An AI assistant that is not allowed to choose the product — Gaurav Kumar Singh">
+  <meta property="og:description" content="A conversational assistant that turns a visitor's plain-language measurement problem into a cited, technically validated recommendation — with a deterministic rule engine, not the language model, holding all recommendation authority.">
+  <meta property="og:url" content="https://gauravsingh.co.in/work/ai-technical-assistant/">
+  <meta property="og:image" content="https://gauravsingh.co.in/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="An AI assistant that is not allowed to choose the product — Gaurav Kumar Singh">
+  <meta name="twitter:description" content="A conversational assistant that turns a visitor's plain-language measurement problem into a cited, technically validated recommendation — with a deterministic rule engine, not the language model, holding all recommendation authority.">
+  <meta name="twitter:image" content="https://gauravsingh.co.in/assets/img/og.png">
+
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="color-scheme" content="light">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@350;400;450;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gauravsingh.co.in/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://gauravsingh.co.in/work/"},{"@type":"ListItem","position":3,"name":"Applied AI","item":"https://gauravsingh.co.in/work/ai-technical-assistant/"}]}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="site-head">
+    <div class="wrap site-head__inner">
+      <a class="brand" href="/">
+        <span class="brand__mark" aria-hidden="true">GS</span>
+        <span>Gaurav<span class="brand__mid"> Kumar</span> <span class="brand__last">Singh</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+          <a href="/about/">About</a>
+          <a href="/work/" aria-current="page">Work</a>
+          <a href="/writing/">Writing</a>
+          <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+<nav class="wrap small muted" aria-label="Breadcrumb" style="padding-top:1.4rem">
+      <a href="/" style="color:inherit;text-decoration:none">Home</a> <span aria-hidden="true">/</span> <a href="/work/" style="color:inherit;text-decoration:none">Work</a> <span aria-hidden="true">/</span> <span aria-current="page">Applied AI</span>
+    </nav>
+  <main id="main">
+
+    <section class="wrap cs-head">
+      <span class="eyebrow">Applied AI</span>
+      <h1>An AI assistant that is not allowed to choose the product</h1>
+      <p class="lede">A conversational assistant that turns a visitor's plain-language measurement problem into a cited, technically validated recommendation — with a deterministic rule engine, not the language model, holding all recommendation authority.</p>
+      <dl class="cs-meta reveal">
+        <div><dt>Context</dt><dd>Enterprise B2B · Scientific instrumentation</dd></div>
+        <div><dt>Period</dt><dd>2026</dd></div>
+        <div><dt>My role</dt><dd>Solution design, architecture, build, evaluation</dd></div>
+        <div><dt>Status</dt><dd>Built and test-gated; in internal approval and rehearsal</dd></div>
+      </dl>
+      <ul class="pill-list"><li>Next.js</li><li>TypeScript</li><li>Claude API</li><li>Retrieval (RAG)</li><li>SQLite</li><li>Playwright</li><li>Vitest</li></ul>
+    </section>
+
+    <section class="wrap" style="padding-top:2.5rem"><div class="stats">
+        <div class="stat-tile reveal">
+          <div class="stat-tile__num">44</div>
+          <div class="stat-tile__label">automated AI safety and rule-correctness test cases</div>
+        </div>
+        <div class="stat-tile reveal">
+          <div class="stat-tile__num">0</div>
+          <div class="stat-tile__label">product recommendations made by the language model</div>
+        </div>
+      </div></section>
+
+    <section class="wrap section">
+      <div class="prose"><h2>The problem</h2>
+<p>At a large technical exhibition, the bottleneck is not footfall. It is that a visitor with a
+genuine measurement problem has to wait for one of a small number of applications
+specialists to be free, describe their problem, and hope the specialist happens to know
+the right instrument for that exact application. Most visitors never get that
+conversation. The ones who do get it late.</p>
+<p>The obvious fix — put a chatbot on a screen — fails for a specific reason. In analytical
+instrumentation, a confidently wrong recommendation is worse than no recommendation. A
+language model that invents a product name, or attaches a specification to the wrong
+instrument, does not merely give a bad answer. It damages technical credibility with
+exactly the audience whose trust the business depends on.</p>
+<p>So the design question was never &quot;can an LLM answer this?&quot; It was: <strong>how do you get the
+fluency of a language model without ever letting it decide anything that matters?</strong></p>
+<h2>The design principle</h2>
+<p>The architecture separates two jobs that chatbots usually blur together.</p>
+<blockquote>
+<p>The language model interprets the visitor&#39;s words and explains a result.
+It never selects a product. A deterministic, version-controlled rule engine does that.</p>
+</blockquote>
+<p>In practice, the flow is:</p>
+<ol>
+<li>The visitor describes the problem in their own words, or follows a guided path.</li>
+<li>The model extracts <strong>structured technical intent</strong> — sample type, measurement need,
+constraints — and nothing else. It produces data, not conclusions.</li>
+<li>That structured intent goes into a rule engine: explicit, reviewable, version-controlled
+rules written and signed off by people who actually know the instruments.</li>
+<li>The rule engine returns an authorised measurement approach — or honestly returns
+nothing, which is a valid and important outcome.</li>
+<li>Only then does the model write the explanation, constrained to what the rule engine
+authorised, with supporting passages retrieved from approved content.</li>
+<li>Any generated explanation naming an unauthorised product is discarded and replaced
+with an approved template.</li>
+</ol>
+<p>The result is a system where the failure mode is <em>&quot;I need to bring in a specialist&quot;</em> rather
+than <em>&quot;here is a confident answer that happens to be wrong.&quot;</em></p>
+<h2>Content governance</h2>
+<p>Retrieval is only as trustworthy as what it retrieves from. The ingestion pipeline crawls a
+curated source list and is content-hash idempotent, so re-running it is safe and produces no
+duplicates. Every ingested passage moves through a <strong>draft → review → approved</strong> workflow.
+Nothing that has not been explicitly approved can ever be cited back to a visitor.</p>
+<p>This is the part that gets skipped in most enterprise AI pilots, and it is the part that
+determines whether the thing can be signed off internally.</p>
+<h2>Treating model behaviour as testable</h2>
+<p>The system ships with a 44-case evaluation suite covering AI behaviour and rule correctness,
+run alongside the normal software gates — type checking, linting, unit and integration tests,
+end-to-end browser journeys, accessibility, security and performance checks.</p>
+<p>That matters more than it sounds. It means a change to a prompt, a rule or the retrieval
+layer is regression-tested the same way a code change is. Model behaviour stops being a
+thing you spot-check before a demo and becomes a thing you can prove.</p>
+<h2>How it was built</h2>
+<p>I designed the architecture and the safety model, wrote the specifications, and drove the
+implementation and test suite, working with AI coding agents under Git version control.</p>
+<p>I am not going to claim this makes me a software engineer. What it does show is something
+I think is more relevant to a transformation role: the distance between <em>&quot;we should try AI
+for this&quot;</em> and <em>working, governed, test-gated software</em> is now short enough that one person
+who understands the business problem can cross it. Knowing where that line sits — and where
+it does not — is increasingly the job.</p>
+<h2>What I would carry forward</h2>
+<ul>
+<li><strong>Decide what the AI is not allowed to do before deciding what it is.</strong> The guardrail is
+the architecture, not a paragraph in the prompt.</li>
+<li><strong>An honest &quot;I don&#39;t know&quot; is a feature.</strong> Routing to a human is a successful outcome, and
+building that in early removed most of the internal objections.</li>
+<li><strong>Governance is what gets it approved.</strong> The evaluation suite and the content approval
+workflow did more to make this deployable inside a technical enterprise than any
+improvement to answer quality.</li>
+</ul>
+</div>
+    </section>
+
+    <section class="wrap section" style="padding-top:0">
+      <div class="sec-head reveal">
+        <div><h2>More work</h2></div>
+        <a class="sec-link" href="/work/">All case studies <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="cards"><article class="card reveal">
+            <span class="card__tag">Digital Platform</span>
+            <h3><a href="/work/digital-platform-transformation/">Turning a corporate website into a digital business platform</a></h3>
+            <p>Rebuilding a country corporate site from a brochure into a platform that carries product discovery, technical documentation, 3D catalogue, events and enquiry capture — and became a primary source of organic traffic and digital enquiries.</p>
+            <div class="card__foot">
+              <span>Enterprise B2B · Scientific instrumentation</span><span class="card__dot" aria-hidden="true"></span><span>2024 — present</span>
+            </div>
+          </article>
+        <article class="card reveal">
+            <span class="card__tag">Automation &amp; CRM</span>
+            <h3><a href="/work/lead-management-transformation/">From shared inboxes to a traceable lead lifecycle</a></h3>
+            <p>Replacing fragmented shared-mailbox enquiry handling with a centralised, automated lead workflow across Power Automate, SharePoint and Salesforce — and a lifecycle framework that finally connected a digital enquiry to its sales outcome.</p>
+            <div class="card__foot">
+              <span>Enterprise B2B · Scientific instrumentation</span><span class="card__dot" aria-hidden="true"></span><span>2025 — present</span>
+            </div>
+          </article>
+        <article class="card reveal">
+            <span class="card__tag">Digital Product</span>
+            <h3><a href="/work/infracue/">InfraCue — an internal ticketing gap that became a product</a></h3>
+            <p>An IT infrastructure operations platform that started as an internal ticketing requirement and grew into a SaaS proposition — SLA management, escalation workflows, asset inventory, monitoring and operational reporting.</p>
+            <div class="card__foot">
+              <span>Self-initiated</span><span class="card__dot" aria-hidden="true"></span><span>2026 — present</span>
+            </div>
+          </article></div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-name">Gaurav Kumar Singh</div>
+          <p class="muted" style="max-width:36ch">Digital Transformation · MarTech &amp; Process Automation · AI-Enabled Solutions</p>
+          <p class="muted" style="margin-top:.85rem">Greater Noida West, Uttar Pradesh, India</p>
+        </div>
+        <div>
+          <h4>Site</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/work/">Work</a></li>
+            <li><a href="/writing/">Writing</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/gks0410/" rel="me noopener" target="_blank">LinkedIn</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 Gaurav Kumar Singh</span>
+        <span>Hand-built static site. No trackers, no cookie banner.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
