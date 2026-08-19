@@ -23,6 +23,12 @@ export const site = {
   availability: 'Open to Digital Transformation & AI adoption roles',
   ogImage: '/assets/img/og.png',
 
+  // Force HTTP -> HTTPS in .htaccess. Keep this false until the SSL
+  // certificate is actually live: with no certificate, the redirect sends
+  // every visitor to a handshake that fails (ERR_SSL_PROTOCOL_ERROR).
+  // Flip to true once https://gauravsingh.co.in loads, then rebuild.
+  forceHttps: false,
+
   nav: [
     { href: '/',         label: 'Home' },
     { href: '/about/',   label: 'About' },

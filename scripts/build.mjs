@@ -515,11 +515,13 @@ DirectoryIndex index.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  RewriteCond %{HTTPS} !=on
+${site.forceHttps ? `  RewriteCond %{HTTPS} !=on
   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-
+` : `  # HTTPS redirect disabled: set forceHttps: true in src/site.mjs once the
+  # SSL certificate is live, then rebuild.
+`}
   RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]
-  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+  RewriteRule ^(.*)$ ${site.forceHttps ? 'https' : 'http'}://%1/$1 [R=301,L]
 
   RewriteCond %{THE_REQUEST} \\s/+(.*/)?index\\.html[\\s?] [NC]
   RewriteRule ^(.*/)?index\\.html$ /$1 [R=301,L]
@@ -574,8 +576,7 @@ RedirectMatch 404 ^/(src|content|scripts|node_modules|dist|\\.github|\\.git)(/|$
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-</IfModule>
+${site.forceHttps ? '  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"\n' : ''}</IfModule>
 `;
 
 /* ------------------------------------------------------------------ MAIN */
