@@ -17,7 +17,7 @@ export const site = {
   emailDisplay: 'gks.6434 [at] gmail.com',
 
   location: 'Greater Noida West, Uttar Pradesh, India',
-  linkedin: 'https://www.linkedin.com/in/gks0410/',
+  linkedin: 'https://www.linkedin.com/in/gauravsingh0410/',
   employer: 'HORIBA India Pvt. Ltd.',
   jobTitle: 'Deputy Manager, Digital Marketing Lead',
   availability: 'Open to Digital Transformation & AI adoption roles',
