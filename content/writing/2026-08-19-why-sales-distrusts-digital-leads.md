@@ -1,7 +1,7 @@
 ---
 title: Your sales team does not trust digital leads. They have a point.
 description: In most B2B organisations the biggest obstacle to digital marketing is not budget or technology — it is a sales team that has been burned before. Their reluctance is evidence, not ignorance.
-date: 2026-08-20
+date: 2026-08-19
 tags: B2B Marketing, Digital Transformation, Sales Alignment
 ---
 

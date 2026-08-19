@@ -1,7 +1,7 @@
 ---
 title: We decided in the room, not in the data
 description: In most conventional B2B companies the marketing budget is set by whoever has the most experience and the most conviction. Experience is not worthless — but it is a hypothesis, and hypotheses are supposed to be tested.
-date: 2026-08-22
+date: 2026-08-19
 tags: Marketing Analytics, Attribution, Data-Driven Decisions
 ---
 

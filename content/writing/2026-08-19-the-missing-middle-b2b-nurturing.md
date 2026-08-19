@@ -1,7 +1,7 @@
 ---
 title: The missing middle — why B2B enquiries go quiet
 description: Most conventional B2B funnels have exactly two states: enquiry and order. Everything between them lives in a salesperson's inbox and memory. That gap is where the majority of your pipeline quietly dies.
-date: 2026-08-21
+date: 2026-08-19
 tags: Marketing Automation, CRM, Lead Nurturing
 ---
 
