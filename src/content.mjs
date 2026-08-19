@@ -56,13 +56,13 @@ function parseFrontMatter(raw) {
 marked.setOptions({ mangle: false, headerIds: true, gfm: true, breaks: false });
 
 // Wrap tables so wide content scrolls inside itself rather than the page.
-const renderer = new marked.Renderer();
-const baseTable = renderer.table.bind(renderer);
-renderer.table = (...args) => `<div class="table-scroll">${baseTable(...args)}</div>`;
-marked.use({ renderer });
-
+// Done as post-processing rather than a renderer override: overriding
+// renderer.table detaches `this` from the parser and breaks on table cells.
 export function md(body) {
-  return marked.parse(body.trim());
+  return marked
+    .parse(body.trim())
+    .replace(/<table>/g, '<div class="table-scroll"><table>')
+    .replace(/<\/table>/g, '</table></div>');
 }
 
 export function readingTime(body) {
