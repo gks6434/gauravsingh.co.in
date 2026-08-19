@@ -12,7 +12,9 @@ no CMS, no runtime dependencies on the server. Hostinger just serves files.
 | `npm run new:post -- "Post title"` | Creates a new Markdown post in `content/writing/` |
 | `npm run og` | Regenerates the social share image and touch icon |
 | `npm run images` | Rebuilds responsive WebP variants from the source photos |
-| `npm run zip` | Builds and packages `dist/site.zip` for upload |
+| `npm run validate` | Structure, links, privacy and confidentiality checks |
+| `npm run verify` | `build` + `validate` — what CI runs before deploying |
+| `npm run zip` | Builds and packages `dist/site.zip` for manual upload |
 
 ## Where things live
 
@@ -40,7 +42,44 @@ npm run zip     # then upload, or just upload the changed folder
 The URL comes from the filename with the date prefix stripped, unless you set
 `slug:` in the front matter. Sitemap and the writing index update automatically.
 
-## Deploying to Hostinger
+## The CV download
+
+There is currently **no CV on the site**. The previous PDF contained a phone
+number and a plain email address, which contradicts the contact policy below.
+When a redacted CV exists, drop it in `src/assets/files/`, add its public path
+to `ALLOWED_PDFS` in `scripts/validate.mjs`, and restore the contact card in
+`scripts/build.mjs` and the footer link in `src/layout.mjs`.
+
+`npm run validate` fails if any PDF is shipped without being allowlisted, so
+this cannot happen by accident again.
+
+## Automatic deployment
+
+Every push to `main` triggers `.github/workflows/deploy.yml`, which builds the
+site, runs the validation suite, and uploads only the changed files to
+`public_html` over FTPS. A pull request runs build + validate but does not deploy.
+
+Required repository **secrets** (Settings → Secrets and variables → Actions):
+
+| Secret | Value |
+|---|---|
+| `FTP_SERVER` | Hostinger FTP hostname or IP, from hPanel → Files → FTP Accounts |
+| `FTP_USERNAME` | FTP username from the same screen |
+| `FTP_PASSWORD` | FTP password (set or reset it there) |
+
+Optional repository **variables**, only if the defaults do not fit:
+
+| Variable | Default | When to change |
+|---|---|---|
+| `FTP_SERVER_DIR` | `public_html/` | If your FTP user lands somewhere other than the account root |
+| `FTP_PROTOCOL` | `ftps` | Set to `ftp` if FTPS negotiation fails |
+| `FTP_PORT` | `21` | Rarely needed |
+
+The first deploy uploads everything; later ones transfer only what changed,
+tracked by a state file the action keeps on the server. `.htaccess` blocks that
+file from public access.
+
+## Deploying by hand (fallback)
 
 **One time — connect the domain (bought at GoDaddy, hosted at Hostinger):**
 

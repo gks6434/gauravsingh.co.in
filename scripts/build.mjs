@@ -434,11 +434,6 @@ function contact() {
           <strong>Email</strong>
           <span>${esc(site.emailDisplay)}</span>
         </a>
-        <a class="contact-card reveal" href="${site.cvPath}" download>
-          <div class="contact-card__icon">${icons.doc}</div>
-          <strong>Download CV</strong>
-          <span>PDF &mdash; one page down from this site</span>
-        </a>
       </div>
 
       <div class="glass reveal" style="padding:clamp(1.75rem,4vw,2.5rem);margin-top:2.5rem">
@@ -531,6 +526,18 @@ DirectoryIndex index.html
 </IfModule>
 
 ErrorDocument 404 /404.html
+
+# The FTP deploy action stores its incremental sync state here. Harmless, but
+# there is no reason for it to be publicly readable.
+<FilesMatch "^\\.(ftp-deploy-sync-state\\.json|htaccess|env)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
 
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml

@@ -11,7 +11,9 @@
     "og": "node scripts/og.mjs",
     "zip": "npm run build && node scripts/zip.mjs",
     "dev": "npm run build && node scripts/serve.mjs",
-    "images": "node scripts/images.mjs"
+    "images": "node scripts/images.mjs",
+    "validate": "node scripts/validate.mjs",
+    "verify": "npm run build && npm run validate"
   },
   "dependencies": {
     "marked": "^15.0.7"

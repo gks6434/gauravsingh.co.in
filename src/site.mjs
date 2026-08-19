@@ -21,7 +21,6 @@ export const site = {
   employer: 'HORIBA India Pvt. Ltd.',
   jobTitle: 'Deputy Manager, Digital Marketing Lead',
   availability: 'Open to Digital Transformation & AI adoption roles',
-  cvPath: '/assets/files/Gaurav-Kumar-Singh-CV.pdf',
   ogImage: '/assets/img/og.png',
 
   nav: [

@@ -1,0 +1,59 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys touch public_html at the same time.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build, validate and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      # Image and social-card generation are local authoring steps that write
+      # into src/assets (committed), so CI needs runtime deps only. This keeps
+      # the run fast and avoids installing native image binaries.
+      - name: Install dependencies
+        run: npm ci --omit=dev
+
+      - name: Build and validate
+        run: npm run verify
+
+      - name: Deploy to Hostinger
+        if: github.event_name != 'pull_request'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          port: ${{ vars.FTP_PORT || 21 }}
+          local-dir: ./public/
+          server-dir: ${{ vars.FTP_SERVER_DIR || 'public_html/' }}
+          # Incremental: only changed files are transferred. Set to true once
+          # if you ever need to force a full re-upload.
+          dangerous-clean-slate: false
+
+      - name: Summary
+        if: github.event_name != 'pull_request'
+        run: |
+          echo "### Deployed to https://gauravsingh.co.in" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Commit: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
