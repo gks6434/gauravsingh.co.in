@@ -429,6 +429,11 @@ function contact() {
           <strong>LinkedIn</strong>
           <span>The fastest way to reach me &mdash; connect and message</span>
         </a>
+        <a class="contact-card reveal" href="${site.cvPath}" download>
+          <div class="contact-card__icon">${icons.doc}</div>
+          <strong>Download CV</strong>
+          <span>PDF, one page &mdash; no phone number or email, by design</span>
+        </a>
         <a class="contact-card reveal" ${emailAttrs} href="/contact/">
           <div class="contact-card__icon">${icons.mail}</div>
           <strong>Email</strong>

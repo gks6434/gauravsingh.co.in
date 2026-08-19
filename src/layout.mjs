@@ -157,6 +157,7 @@ ${o.body}
           <ul>
             <li><a href="${site.linkedin}" rel="me noopener" target="_blank">LinkedIn</a></li>
             <li><a href="/contact/">Contact</a></li>
+            <li><a href="${site.cvPath}" download>Download CV</a></li>
           </ul>
         </div>
       </div>

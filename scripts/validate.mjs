@@ -110,6 +110,18 @@ for (const [label, re] of confidential) {
   if (re.test(htmlBlob)) fail(`CONFIDENTIALITY: ${label} appears in served HTML`);
 }
 
+/* The published CV is generated from src/cv-source.html. That file lives
+   outside src/assets on purpose, so it is never copied into public/. PDF text
+   is compressed and cannot be grepped, so assert against that committed source
+   instead — it is the exact input the PDF was rendered from. */
+try {
+  const cvSource = await readFile(path.join(ROOT, 'src/cv-source.html'), 'utf8');
+  if (/7004917881|\+91[-\s]?70049/.test(cvSource)) fail('PRIVACY: published CV source contains a phone number');
+  if (/gks\.6434@gmail\.com/.test(cvSource))        fail('PRIVACY: published CV source contains a plain email address');
+} catch {
+  fail('Published CV source (src/cv-source.html) is missing — cannot verify the CV carries no personal contact details');
+}
+
 /* --- Build hygiene -------------------------------------------------------- */
 const shippedSources = allPaths.filter(p => path.basename(p).startsWith('source-'));
 if (shippedSources.length) fail(`Source photos shipped to public/: ${shippedSources.join(', ')}`);
@@ -117,7 +129,7 @@ if (shippedSources.length) fail(`Source photos shipped to public/: ${shippedSour
 /* No PDF ships unless it is deliberately allowlisted here. The CV carries a
    phone number and a plain email address, which this site does not publish;
    add a redacted file's path below when one exists. */
-const ALLOWED_PDFS = [];
+const ALLOWED_PDFS = ['/assets/files/Gaurav-Kumar-Singh-CV.pdf'];
 for (const p of allPaths.filter(p => p.endsWith('.pdf'))) {
   if (!ALLOWED_PDFS.includes(p)) {
     fail(`PRIVACY: ${p} is shipped but not allowlisted — check it for phone/email before publishing`);
